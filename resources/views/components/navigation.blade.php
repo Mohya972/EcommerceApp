@@ -72,7 +72,7 @@
                 <div class="ml-4 flex lg:ml-0">
                     <a href="{{ route('home') }}">
                         <span class="sr-only"> Mohya'Floral </span>
-                        <img src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=600" alt="" class="h-8 w-auto" />
+                        <img src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=green&shade=600" alt="" class="h-8 w-auto" />
                     </a>
                 </div>
                     <!-- Fin Logo -->

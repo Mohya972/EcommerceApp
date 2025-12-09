@@ -16,8 +16,15 @@
     </head>
     <body>
 
+        <main id="content">
+            <x-navigation />
+            <div>
+                @yield('content')
+            </div>
+
+
+        </main>
         
-        <x-navigation />
 
 
         <!-- Include this script tag or install `@tailwindplus/elements` via npm: -->
