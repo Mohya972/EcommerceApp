@@ -15,9 +15,9 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body>
-        <h1 class="text-3xl font-bold underline">
-            Hello world!
-        </h1>
+
+        
+        <x-navigation />
 
 
         <!-- Include this script tag or install `@tailwindplus/elements` via npm: -->
