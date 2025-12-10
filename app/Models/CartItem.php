@@ -106,4 +106,24 @@ class CartItem extends Model
     {
         return number_format($this->subtotal, 2, ',', ' ') . ' €';
     }
+
+    /**
+     * Incrémente la quantité
+     */
+    public function incrementQuantity()
+    {
+        $this->quantity++;
+        $this->save();
+    }
+
+    /**
+     * Décrémente la quantité (minimum 1)
+     */
+    public function decrementQuantity()
+    {
+        if ($this->quantity > 1) {
+            $this->quantity--;
+            $this->save();
+        }
+    }
 }
