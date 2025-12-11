@@ -26,11 +26,11 @@ class CartController extends Controller
     public function add(Product $product)
     {
         // Vérifie que le produit est disponible
-        if (!$product->in_stock) {
-            return back()->with('error', 'Ce produit n\'est plus en stock.');
+        if (!$product->in_stock) { // Si le produit n'est pas en stock ..
+            return back()->with('error', 'Ce produit n\'est plus en stock.'); // ..affiche un message d'erreur
         }
 
-        $cart = auth()->user()->getOrCreateCart();
+        $cart = auth()->user()->getOrCreateCart(); // Retourne le panier de l'utilisateur connecté ou en crée un nouveau s'il n'existe pas
 
         // Vérifie si le produit est déjà dans le panier
         $cartItem = $cart->items()->where('product_id', $product->id)->first();
