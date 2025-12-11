@@ -241,7 +241,7 @@ class Product extends Model
     {
         if (!$this->image) {
             // Image par défaut si pas d'image
-            return asset('images/no-image.png');
+            return asset('images/default.jpg');
         }
 
         return asset('storage/' . $this->image);
