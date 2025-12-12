@@ -31,6 +31,7 @@ class ProductInfolist
                     ->label('Image')
                     ->disk('public')
                     ->placeholder('-'),
+                
                 TextEntry::make('sku')
                     ->label('SKU')
                     ->placeholder('-'),

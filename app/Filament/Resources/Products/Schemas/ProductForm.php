@@ -35,6 +35,10 @@ class ProductForm
                 FileUpload::make('image')
                     ->disk('public')
                     ->image(),
+                FileUpload::make('images')
+                    ->disk('public')
+                    ->image()
+                    ->multiple(),
                 TextInput::make('images'),
                 TextInput::make('sku')
                     ->label('SKU'),
