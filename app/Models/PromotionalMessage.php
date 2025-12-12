@@ -29,5 +29,5 @@ class PromotionalMessage extends Model
             ->where('end_date', '>=', $now);
     }
 
-    public $table = 'promotional_messages';
+    
 }

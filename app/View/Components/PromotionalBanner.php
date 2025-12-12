@@ -9,17 +9,21 @@ use Illuminate\Contracts\View\View;
 
 class PromotionalBanner extends Component
 {
-    public PromotionalMessage $banner;
+    public $banners;
+
+
 
     // Constructeur pour initialiser un message promotionnel à partir d'un autre
-    public function _construct(PromotionalMessage $banner)
+    public function _construct()
     {
-        $this->banner = $banner;
+        
     }
 
     // Méthode pour rendre la vue du composant
     public function render(): View|Closure|string
     {
+        $this->banners = PromotionalMessage::activenow()->latest()->get();
+        //$this->banners = PromotionalMessage::activenow()->first()->get();
         return view('components.promotional-banner');
     }
 }

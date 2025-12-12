@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
@@ -13,6 +14,7 @@ class HomeController extends Controller
      */
     public function index()
     {
+        
         // Récupère les catégories actives avec leurs compteurs de produits
         $categories = Category::active()
             ->sorted()

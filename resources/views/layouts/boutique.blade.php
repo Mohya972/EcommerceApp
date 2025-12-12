@@ -16,6 +16,10 @@
     </head>
     <body>
 
+        <x-promotional-banner />
+            
+        
+
         <main id="content">
             
             <x-navigation />
