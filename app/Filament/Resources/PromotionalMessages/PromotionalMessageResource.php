@@ -2,26 +2,28 @@
 
 namespace App\Filament\Resources\PromotionalMessages;
 
-use App\Filament\Resources\PromotionalMessages\Pages\ManagePromotionalMessages;
-use App\Models\PromotionalMessage;
 use BackedEnum;
-use Filament\Actions\BulkActionGroup;
-use Filament\Actions\DeleteAction;
-use Filament\Actions\DeleteBulkAction;
+use Filament\Tables\Table;
+use Filament\Schemas\Schema;
 use Filament\Actions\EditAction;
 use Filament\Actions\ViewAction;
-use Filament\Forms\Components\DateTimePicker;
-use Filament\Forms\Components\TextInput;
-use Filament\Forms\Components\Textarea;
-use Filament\Forms\Components\Toggle;
-use Filament\Infolists\Components\IconEntry;
-use Filament\Infolists\Components\TextEntry;
 use Filament\Resources\Resource;
-use Filament\Schemas\Schema;
+use App\Models\PromotionalMessage;
+use Filament\Actions\DeleteAction;
 use Filament\Support\Icons\Heroicon;
+use Filament\Actions\BulkActionGroup;
+use Filament\Forms\Components\Toggle;
+use Filament\Actions\DeleteBulkAction;
+use Filament\Forms\Components\Textarea;
 use Filament\Tables\Columns\IconColumn;
 use Filament\Tables\Columns\TextColumn;
-use Filament\Tables\Table;
+use Filament\Forms\Components\TextInput;
+use Filament\Tables\Filters\SelectFilter;
+use Filament\Tables\Filters\TernaryFilter;
+use Filament\Infolists\Components\IconEntry;
+use Filament\Infolists\Components\TextEntry;
+use Filament\Forms\Components\DateTimePicker;
+use App\Filament\Resources\PromotionalMessages\Pages\ManagePromotionalMessages;
 
 class PromotionalMessageResource extends Resource
 {
@@ -50,6 +52,13 @@ class PromotionalMessageResource extends Resource
                     ->label('Affiché jusqu\'à :')
                     ->required(),
                 TextInput::make('type')
+                    ->label('Type :')
+                    ->options([
+                        'info' => 'Info',
+                        'warning' => 'Avertissement',
+                        'error' => 'Erreur',
+                        'success' => 'Succès',
+                    ])  
                     ->required()
                     ->default('info'),
                 Toggle::make('is_active')
@@ -100,6 +109,15 @@ class PromotionalMessageResource extends Resource
                     ->dateTime()
                     ->sortable(),
                 TextColumn::make('type')
+                    ->label('Type')
+                    ->badge()
+                    ->color(fn (PromotionalMessage $record) => match ($record->type) {
+                        'info' => 'black',
+                        'warning' => 'yellow',
+                        'error' => 'red',
+                        'success' => 'white',
+                        default => 'gray',
+                    })
                     ->searchable(),
                 IconColumn::make('is_active')
                     ->label('Activé')
@@ -117,6 +135,16 @@ class PromotionalMessageResource extends Resource
             ])
             ->filters([
                 //
+                SelectFilter::make('type')
+                    ->label('Type')
+                    ->options([
+                        'info' => 'Info',
+                        'warning' => 'Avertissement',
+                        'error' => 'Erreur',
+                        'success' => 'Succès',
+                    ]),
+                TernaryFilter::make('is_active')
+                    ->label('Activé'),
             ])
             ->recordActions([
                 ViewAction::make(),

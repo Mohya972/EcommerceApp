@@ -1,3 +1,39 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* ----------------------------------------------------------------------
+VOTRE CODE CSS PERSONNALISÉ COMMENCE ICI 
+(Ex: Styles de votre bannière et de l'animation de défilement)
+----------------------------------------------------------------------
+*/
+
+/* 1. Définition de l'animation */
+@keyframes scroll-right {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(100%);
+        }
+    }
+
+/* 2. Style des conteneurs */
+.scrolling-banner {
+    box-sizing: border-box; 
+    width: 100%;
+}
+
+.scrolling-content {
+    display: inline-block;
+    /* Ajustez 15s pour la vitesse souhaitée */
+    animation: scroll-right 15s linear infinite; 
+}
+
+.scrolling-content:hover {
+    animation-play-state: paused;
+}
+
+.content-item {
+    display: inline-block; 
+}
