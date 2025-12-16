@@ -12,6 +12,7 @@ use App\Models\PromotionalMessage;
 use Filament\Actions\DeleteAction;
 use Filament\Support\Icons\Heroicon;
 use Filament\Actions\BulkActionGroup;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Toggle;
 use Filament\Actions\DeleteBulkAction;
 use Filament\Forms\Components\Textarea;
@@ -51,7 +52,7 @@ class PromotionalMessageResource extends Resource
                 DateTimePicker::make('end_date')
                     ->label('Affiché jusqu\'à :')
                     ->required(),
-                TextInput::make('type')
+                Select::make('type')
                     ->label('Type :')
                     ->options([
                         'info' => 'Info',
