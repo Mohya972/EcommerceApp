@@ -20,7 +20,10 @@
                             @csrf
                             @method('delete')
                         
-                            <button type="submit" class="flex items-center justify-center rounded-md border border-transparent bg-green-600 px-6 py-3 text-base font-medium text-white shadow-xs hover:bg-green-700">Vider le panier</button>
+                            <button type="submit" 
+                                class="flex items-center justify-center rounded-md border border-transparent bg-green-600 px-6 py-3 text-base font-medium text-white shadow-xs hover:bg-green-700">
+                                    Vider le panier
+                            </button>
                                                 
                         </form>
                     </div>
@@ -36,7 +39,7 @@
                     @forelse ($cart->items as $item)
                         <li class="flex py-6">
                             <div class="size-24 shrink-0 overflow-hidden rounded-md border border-gray-200">
-                                <img src="https://tailwindcss.com/plus-assets/img/ecommerce-images/shopping-cart-page-04-product-01.jpg" 
+                                <img src="{{ $item->product->image_url }}" 
                                 alt="{{ $item->product->name }}" 
                                 class="size-full object-cover" />
                             </div>
@@ -45,7 +48,7 @@
                                 <div>
                                     <div class="flex justify-between text-base font-medium text-gray-900">
                                         <h3>
-                                            <a href="#"> {{ $item->product->name }} </a>
+                                            <a href="{{ route('products.show', 'product') }}"> {{ $item->product->name }} </a>
                                         </h3>
                                         <p class="ml-4">{{ $item->formattedPrice }}</p>
                                     </div>
@@ -79,17 +82,19 @@
 
         <div class="border-t border-gray-200 px-4 py-6 sm:px-6">
             <div class="flex justify-between text-base font-medium text-gray-900">
-                <p>Subtotal</p>
-                <p>{{ $cart->formatted_subtotal }}</p>
+                <p>Montant Hors Taxes</p>
+                <p>{{ $cart->getFormattedSubtotalAttribute() }}</p>
             </div>
-            <p class="mt-0.5 text-sm text-gray-500">{{ $cart->getFormattedSubtotalAttribute() }}</p>
+            <p class="mt-0.5 text-sm text-gray-500">(Taxes et frais de livraison calculés au moment du paiement)</p>
             
             <!-- Bouton Continuer vos achats -->
             <div class="mt-6 flex justify-center text-center text-sm text-gray-500">
                 <p>
                 <button type="button" command="close" commandfor="drawer" class="font-medium text-green-600 hover:text-green-500">
                     <span aria-hidden="false"> &larr;</span>
-                        Continue Shopping
+                        <a href="{{ route('products.index') }}">
+                            Continue Shopping
+                        </a>
                     <span aria-hidden="true"> &rarr;</span>
                 </button>
                 </p>
