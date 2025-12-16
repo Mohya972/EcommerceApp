@@ -16,12 +16,27 @@
                     <div class="absolute top-1/2 left-[80%] text-white -translate-x-1/2 -translate-y-1/2 w-1/3 text-center">
     
                         <h3 class="text-2xl font-semibold sm:text-3xl amber-500:text-black mb-2">
-                            {{ $newProduct->name }}
+                            <a href="{{ route('products.show', $newProduct->slug) }}">
+                                {{ $newProduct->name }}
+                            </a>
+                            
                         </h3> 
     
                         <p class="text-lg"> 
                             {{ $newProduct->short_description }} 
                         </p> 
+
+                        <div class="mt-4">
+                            <a href="{{ route('products.show', $newProduct->slug) }}"
+                                class="inline-block px-5 py-3 text-sm font-medium text-white bg-green-600 rounded-md hover:bg-green-700">
+                                    Voir le produit
+                            </a> 
+                        </div> 
+                        
+                        <p class="mt-4 text-sm italic">
+
+                            Maintenant Disponible En Ligne !
+                        </p>
                     </div>
                         
                 </div>
