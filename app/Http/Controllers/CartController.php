@@ -16,7 +16,7 @@ class CartController extends Controller
     {
         $cart = auth()->user()->getOrCreateCart(); 
         $cart->load(['items.product.category']);
-
+        
         return view('cart.index', compact('cart'));
     }
 
