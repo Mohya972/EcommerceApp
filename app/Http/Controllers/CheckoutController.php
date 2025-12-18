@@ -93,8 +93,36 @@ class CheckoutController extends Controller
 
             DB::commit();
 
-            return redirect()->route('checkout.success', $order)
-                ->with('success', 'Commande passée avec succès !');
+            // 3. Créer la session de paiement Stripe
+            $checkout = auth()->user()->checkout([
+                [
+                    'price_data' => [
+                        'currency' => 'eur',
+                        'product_data' => [
+                            'name' => 'Commande #' . $order->id,
+                            'description' => 'Paiement de votre commande',
+                        ],
+                        'unit_amount' => $order->total * 100, // montant en centimes
+                    ],
+                    'quantity' => 1,
+                ]
+            ], [
+                'success_url' => route('checkout.success', ['order' => $order->id]),
+                'cancel_url' => route('checkout.cancel', ['order' => $order->id]),
+                'metadata' => [
+                    'order_id' => $order->id,
+                ],
+                'mode' => 'payment',
+            ]);
+        
+            // 4. Sauvegarder l'ID de session Stripe dans la commande
+            $order->update([
+                'stripe_checkout_session_id' => $checkout->id,
+            ]);
+
+            // 5. Rediriger vers Stripe Checkout
+            return redirect($checkout->url);
+            //return redirect()->route('checkout.success', $order)->with('success', 'Commande passée avec succès !');
 
         } catch (\Exception $e) {
             DB::rollBack();
