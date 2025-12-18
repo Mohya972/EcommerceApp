@@ -8,6 +8,7 @@
     "require": {
         "php": "^8.2",
         "filament/filament": "^4.0",
+        "laravel/cashier": "^16.1",
         "laravel/framework": "^12.0",
         "laravel/tinker": "^2.10.1"
     },
@@ -82,6 +83,9 @@
         "allow-plugins": {
             "pestphp/pest-plugin": true,
             "php-http/discovery": true
+        },
+        "audit": {
+            "ignore": ["PKSA-yb9k-ykqx-p2zw"]
         }
     },
     "minimum-stability": "stable",
