@@ -3,6 +3,34 @@
 
 @section('content')
 
+    <div class="bg-white">
+        <div class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
+
+            <h1 class="text-3xl font-bold mb-4">
+                Nos offres du moment
+            </h1>
+
+            <p class="mb-8">
+        Découvrez notre sélection d'offres du moment dans nos univers Jardin & potager, 
+        décoration de la maison, animalerie, bien-être, alimentation bio et aménagement extérieur. 
+        
+        Pour jardiner au naturel, 
+        composer votre potager en extérieur comme en intérieur, décorer votre maison, 
+        prendre soin de votre animal et de votre bien-être. 
+        
+        De quoi vous faire plaisir toute l'année ! 
+        
+        Vous êtes membres de notre programme de fidélité ? 
+        Bénéficiez toute l’année et sur tous les rayons de nos prix exclusifs Club botanic®. 
+        Ces avantages sont exclusivement réservés à nos clients Club !
+            </p>
+        </div>
+    </div>
+
+
+
+
+
     <!-- Sidebar Filtres -->
     <div class="lg:col-span-1">
         <div class="bg-white rounded-lg shadow p-6 sticky top-4">

@@ -1,7 +1,7 @@
 @extends('layouts.boutique')
 
 @section('content')
-    <!-- Featured Products Carousel -->
+    <!-- New Products Carousel -->
 
     <div id="default-carousel" class="relative w-full" data-carousel="slide">
         <!-- Carousel wrapper -->
@@ -89,8 +89,10 @@
         </button>
     </div>
 
-    <!-- End Featured Products Carousel -->
+    <!-- End New Products Carousel -->
 
+
+    <!-- Featured Products Section -->
     <div class="bg-white">
         <div class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
             <h2 class="text-2xl font-bold tracking-tight text-gray-900"> Produits Vedettes </h2>
@@ -106,7 +108,9 @@
             </div>
         </div>
     </div>
+    <!-- End Featured Products Section -->
 
+    <!-- Products en solde Section -->
     <div class="bg-white">
         <div class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
             <h2 class="text-2xl font-bold tracking-tight text-gray-900"> En solde ! </h2>
@@ -122,4 +126,8 @@
             </div>
         </div>
     </div>
+    <!-- End Products en solde Section -->
+
+    
+
 @endsection

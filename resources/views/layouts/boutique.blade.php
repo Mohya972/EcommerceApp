@@ -28,13 +28,21 @@
                 @yield('content')
             </div>
 
-
+            
         </main>
         
 
-
+        
         <!-- Include this script tag or install `@tailwindplus/elements` via npm: -->
         <script src="https://cdn.jsdelivr.net/npm/@tailwindplus/elements@1" type="module"></script>
         <script src="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.js"></script>
+
+        
     </body>
 </html>
+
+
+
+
+
+

@@ -22,13 +22,17 @@
 
                     <div class="space-y-6 border-t border-gray-200 px-4 py-6">
                         <div class="flow-root">
-                            <a href="{{ route('home') }}" class="-m-2 block p-2 font-medium text-gray-900"> Accueil </a>
+                            <a href="#" class="-m-2 block p-2 font-medium text-gray-900"> Le Club </a>
                         </div>
                         <div class="flow-root">
-                            <a href="{{ route('products.index') }}" class="-m-2 block p-2 font-medium text-gray-900"> Produits </a>
+                            <a href="{{ route('products.index') }}" class="-m-2 block p-2 font-medium text-gray-900"> Boutique </a>
                         </div>
                         <div class="flow-root">
-                            <a href="{{ route('categories.show', 'category') }}" class="-m-2 block p-2 font-medium text-gray-900"> Catégories </a>
+                            <a href="#" class="-m-2 block p-2 font-medium text-gray-900"> Conseils d'expert </a>
+                        </div>
+                        
+                        <div class="flow-root">
+                            <a href="#" class="-m-2 block p-2 font-medium text-gray-900"> Inspirations </a>
                         </div>
                         <!-- Cart -->
                     <div class="ml-4 flow-root lg:ml-6">
@@ -52,6 +56,9 @@
                         @auth
                             <div class="flow-root">
                                 <a href="{{ route('profile.edit') }}" class="-m-2 block p-2 font-medium text-gray-900"> Mon Compte </a>
+                            </div>
+                            <div class="flow-root">
+                                <a href="#" class="-m-2 block p-2 font-medium text-gray-900"> Ma liste d'envies </a>
                             </div>
                         @endauth
                 
@@ -91,15 +98,19 @@
                 <div class="ml-auto flex items-center">
                     <div class="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
 
-                        <a href="{{ route('home') }}" class="text-sm font-medium text-gray-700 hover:text-gray-800"> Accueil </a>
+                        <a href="#" class="text-sm font-medium text-gray-700 hover:text-gray-800"> Le Club </a>
 
                         <span aria-hidden="true" class="h-6 w-px bg-gray-200"></span>
 
-                        <a href="{{ route('products.index') }}" class="text-sm font-medium text-gray-700 hover:text-gray-800"> Produits </a>
+                        <a href="{{ route('products.index') }}" class="text-sm font-medium text-gray-700 hover:text-gray-800"> Boutique </a>
 
                         <span aria-hidden="true" class="h-6 w-px bg-gray-200"></span>
 
-                        <a href="{{ route('categories.show', 'category') }}" class="text-sm font-medium text-gray-700 hover:text-gray-800"> Catégories </a>
+                        <a href="#" class="text-sm font-medium text-gray-700 hover:text-gray-800"> Conseils d'expert </a>
+
+                        <span aria-hidden="true" class="h-6 w-px bg-gray-200"></span>
+
+                        <a href="#" class="text-sm font-medium text-gray-700 hover:text-gray-800"> Inspirations </a>
 
                         <span aria-hidden="true" class="h-6 w-px bg-gray-200"></span>
 
@@ -109,6 +120,10 @@
             
                         @auth
                             <a href="{{ route('profile.edit') }}" class="text-sm font-medium text-gray-700 hover:text-gray-800"> Mon Compte </a>
+
+                            <span aria-hidden="true" class="h-6 w-px bg-gray-200"></span>
+
+                            <a href="#" class="text-sm font-medium text-gray-700 hover:text-gray-800"> Ma liste d'envies </a>
                         @endauth
             
                     </div>
