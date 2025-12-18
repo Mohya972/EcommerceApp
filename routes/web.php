@@ -6,6 +6,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\CheckoutController;
 
 // Page d'accueil
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -24,6 +25,12 @@ Route::middleware(['auth'])->group(function () {
     Route::patch('/cart/update/{cartItem}', [CartController::class, 'update'])->name('cart.update'); // Mise à jour de la quantité d'un produit dans le panier
     Route::delete('/cart/remove/{cartItem}', [CartController::class, 'remove'])->name('cart.remove'); // Suppression d'un produit du panier
     Route::delete('/cart/clear', [CartController::class, 'clear'])->name('cart.clear'); // Vidage du panier
+});
+
+// Commande Checkout (authentification requise)
+Route::middleware(['auth'])->group(function () {
+    Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout.index'); // Page de checkout
+    Route::post('/checkout/process', [CheckoutController::class, 'process'])->name('checkout.process'); // Traitement du paiement       
 });
 
 // Blog
