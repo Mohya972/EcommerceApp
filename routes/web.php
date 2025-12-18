@@ -29,8 +29,11 @@ Route::middleware(['auth'])->group(function () {
 
 // Commande Checkout (authentification requise)
 Route::middleware(['auth'])->group(function () {
-    Route::get('/checkout', [CheckoutController::class, 'index'])->name('checkout.index'); // Page de checkout
-    Route::post('/checkout/process', [CheckoutController::class, 'process'])->name('checkout.process'); // Traitement du paiement       
+    Route::get('/checkout', [CheckoutController::class, 'teststripe'])->name('teststripe'); // Page de test de checkout
+
+    Route::get('/checkout/success', [CheckoutController::class, 'success'])->name('checkout.success'); // Page de succès après paiement
+    Route::get('/checkout/cancel', [CheckoutController::class, 'cancel'])->name('checkout.cancel'); // Page d'annulation de paiement
+    //Route::post('/checkout/process', [CheckoutController::class, 'process'])->name('checkout.process'); // Traitement du paiement       
 });
 
 // Blog
