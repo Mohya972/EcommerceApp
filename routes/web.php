@@ -1,10 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProfileController;
 
 // Page d'accueil
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -25,8 +26,13 @@ Route::middleware(['auth'])->group(function () {
     Route::delete('/cart/clear', [CartController::class, 'clear'])->name('cart.clear'); // Vidage du panier
 });
 
-
-
+// Blog
+Route::prefix('blog')->name('blog.')->group(function () {
+    Route::get('/', [BlogController::class, 'index'])->name('index');
+    Route::get('/{post}', [BlogController::class, 'show'])->name('show');
+    Route::post('/{post}/comment', [BlogController::class, 'storeComment'])->name('comment.store');
+    Route::post('/subscribe', [BlogController::class, 'subscribe'])->name('subscribe');
+});
 
 /*
 Route::get('/', function () {

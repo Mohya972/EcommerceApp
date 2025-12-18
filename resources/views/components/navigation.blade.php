@@ -32,7 +32,7 @@
                         </div>
                         
                         <div class="flow-root">
-                            <a href="#" class="-m-2 block p-2 font-medium text-gray-900"> Inspirations </a>
+                            <a href="{{ route('blog.index') }}" class="-m-2 block p-2 font-medium text-gray-900"> Inspirations </a>
                         </div>
                         <!-- Cart -->
                     <div class="ml-4 flow-root lg:ml-6">
@@ -110,7 +110,7 @@
 
                         <span aria-hidden="true" class="h-6 w-px bg-gray-200"></span>
 
-                        <a href="#" class="text-sm font-medium text-gray-700 hover:text-gray-800"> Inspirations </a>
+                        <a href="{{ route('blog.index') }}" class="text-sm font-medium text-gray-700 hover:text-gray-800"> Inspirations </a>
 
                         <span aria-hidden="true" class="h-6 w-px bg-gray-200"></span>
 
