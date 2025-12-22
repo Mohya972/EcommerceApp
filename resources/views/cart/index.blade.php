@@ -11,7 +11,7 @@
                 <div>
                     <h2 id="drawer-title" class="text-lg font-medium text-gray-900">Mon Panier</h2>
                 </div>
-              
+            
                     <!-- Bouton Vider le panier -->
                 <div class="mt-6 flex justify-center text-center text-sm text-gray-500">
 
@@ -104,7 +104,7 @@
             <!-- Bouton Payer -->
             <div class="mt-6 flex justify-center text-center text-sm text-gray-500">
                 <div class="mt-6">
-                    <form action="#" method="post">
+                    <form action="{{ route('checkout.process') }}" method="post">
                         @csrf
                                                 
                         <button type="submit" class="flex items-center justify-center rounded-md border border-transparent bg-green-600 px-6 py-3 text-base font-medium text-white shadow-xs hover:bg-green-700">Payer</button>

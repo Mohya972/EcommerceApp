@@ -11,6 +11,11 @@ use App\Http\Controllers\CheckoutController;
 // Page d'accueil
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
+// Club
+Route::get('/club', function () {
+    return view('club.home');
+})->name('club.home');
+
 // Catalogue produits
 Route::get('/products', [ProductController::class, 'index'])->name('products.index');
 Route::get('/products/{product:slug}', [ProductController::class, 'show'])->name('products.show');
@@ -43,6 +48,12 @@ Route::prefix('blog')->name('blog.')->group(function () {
     Route::post('/{post}/comment', [BlogController::class, 'storeComment'])->name('comment.store');
     Route::post('/subscribe', [BlogController::class, 'subscribe'])->name('subscribe');
 });
+
+// Prestations et services
+Route::get('/services', function () {
+    return view('services.index');
+})->name('services.index');
+
 
 /*
 Route::get('/', function () {

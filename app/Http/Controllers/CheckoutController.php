@@ -149,7 +149,21 @@ class CheckoutController extends Controller
     // Commande réalisée avec succès
     public function success()
     {
+        // récupérer l'id de stripe dans la requête
+        $sessionId = request()->query('session_id');
+
+        // vérifier le statut de la session de paiement avec l'API Stripe 
+        $checkoutSession = \Stripe\Checkout\Session::retrieve($sessionId); // Récupérer la session de paiement
+        $order = Order::where('stripe_checkout_session_id', $sessionId)->first(); // Récupérer la commande associée
+
+        if ($checkoutSession && $order) { // Vérifier que la session et la commande existent
+            // Mettre à jour le statut de la commande
+            $order->update(['status' => OrderStatus::PAID]); // Marquer la commande comme payée
+        } else {
+            return redirect()->route('home')->with('error', 'Erreur lors de la validation de la commande.');
+        }
         
+        return view('checkout.success', compact('order')); // Afficher la vue de succès avec les détails de la commande
     }
 
     // Commande annulée

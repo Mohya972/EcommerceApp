@@ -9,7 +9,7 @@
                 <el-dialog-panel class="relative flex w-full max-w-xs transform flex-col overflow-y-auto bg-white pb-12 shadow-xl transition duration-300 ease-in-out data-closed:-translate-x-full">
                     <div class="flex px-4 pt-5 pb-2">
 
-                        <button type="button" command="close" commandfor="mobile-menu" class="relative -m-2 inline-flex items-center justify-center rounded-md p-2 text-gray-400">
+                        <button type="button" command="close" commandfor="mobile-menu" class="relative -m-2 inline-flex items-center justify-center rounded-md p-2 text-green-400">
                             <span class="absolute -inset-0.5"></span>
                             <span class="sr-only">Close menu</span>
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon" aria-hidden="true" class="size-6">
@@ -22,7 +22,7 @@
 
                     <div class="space-y-6 border-t border-gray-200 px-4 py-6">
                         <div class="flow-root">
-                            <a href="#" class="-m-2 block p-2 font-medium text-gray-900"> Le Club </a>
+                            <a href="{{ route('club.home') }}" class="-m-2 block p-2 font-medium text-gray-900"> Le Club </a>
                         </div>
                         <div class="flow-root">
                             <a href="{{ route('products.index') }}" class="-m-2 block p-2 font-medium text-gray-900"> Boutique </a>
@@ -35,15 +35,26 @@
                             <a href="{{ route('blog.index') }}" class="-m-2 block p-2 font-medium text-gray-900"> Inspirations </a>
                         </div>
                         <!-- Cart -->
-                    <div class="ml-4 flow-root lg:ml-6">
-                        <a href="{{ route('cart.index') }}" class="group -m-2 flex items-center p-2">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon" aria-hidden="true" class="size-6 shrink-0 text-gray-400 group-hover:text-gray-500">
-                                <path d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
-                            <span class="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">{{ $cart?->total_items ?? 0 }}</span>
-                            <span class="sr-only">items in cart, view bag</span>
-                        </a>
-                    </div>
+                        <div class="ml-4 flow-root lg:ml-6">
+                    <a href="{{ route('cart.index') }}" class="group -m-2 flex items-center p-2">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 shrink-0 text-green-400 group-hover:text-green-500">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
+                </svg>
+
+                <span class="ml-2 text-sm font-medium text-green-700 group-hover:text-green-800">
+                    @auth
+                        @if(auth()->user()->cart && auth()->user()->cart->total_items > 0)
+                            {{ auth()->user()->cart->total_items }}
+                        @else
+                            0
+                        @endif
+                    @else
+                        0
+                    @endauth
+                </span>
+                <span class="sr-only">items in cart, view bag</span>
+                    </a>
+                        </div>
                     </div>
 
                     <div class="space-y-6 border-t border-gray-200 px-4 py-6">
@@ -98,7 +109,7 @@
                 <div class="ml-auto flex items-center">
                     <div class="hidden lg:flex lg:flex-1 lg:items-center lg:justify-end lg:space-x-6">
 
-                        <a href="#" class="text-sm font-medium text-gray-700 hover:text-gray-800"> Le Club </a>
+                        <a href="{{ route('club.home') }}" class="text-sm font-medium text-gray-700 hover:text-gray-800"> Le Club </a>
 
                         <span aria-hidden="true" class="h-6 w-px bg-gray-200"></span>
 
@@ -131,23 +142,24 @@
             
                     <!-- Cart -->
                     <div class="ml-4 flow-root lg:ml-6">
-                        <a href="{{ route('cart.index') }}" class="group -m-2 flex items-center p-2">
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" data-slot="icon" aria-hidden="true" class="size-6 shrink-0 text-gray-400 group-hover:text-gray-500">
-                                <path d="M15.75 10.5V6a3.75 3.75 0 1 0-7.5 0v4.5m11.356-1.993 1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 0 1-1.12-1.243l1.264-12A1.125 1.125 0 0 1 5.513 7.5h12.974c.576 0 1.059.435 1.119 1.007ZM8.625 10.5a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Zm7.5 0a.375.375 0 1 1-.75 0 .375.375 0 0 1 .75 0Z" stroke-linecap="round" stroke-linejoin="round" />
-                            </svg>
-                            <span class="ml-2 text-sm font-medium text-gray-700 group-hover:text-gray-800">
-                                
-                                <!-- @auth -->
-                                    
-                                <!-- @if ( ) -->
-                                    
-                                <!-- @endif -->
+                <a href="{{ route('cart.index') }}" class="group -m-2 flex items-center p-2">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 shrink-0 text-green-400 group-hover:text-green-500">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 0 0-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 0 0-16.536-1.84M7.5 14.25 5.106 5.272M6 20.25a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Zm12.75 0a.75.75 0 1 1-1.5 0 .75.75 0 0 1 1.5 0Z" />
+            </svg>
 
-                                <!-- @auth -->
-
-                                {{ $cart?->total_items ?? 0 }}</span>
-                            <span class="sr-only">items in cart, view bag</span>
-                        </a>
+            <span class="ml-2 text-sm font-medium text-green-700 group-hover:text-green-800">
+                @auth
+                    @if(auth()->user()->cart && auth()->user()->cart->total_items > 0)
+                        {{ auth()->user()->cart->total_items }}
+                    @else
+                        0
+                    @endif
+                @else
+                    0
+                @endauth
+            </span>
+            <span class="sr-only">items in cart, view bag</span>
+                </a>
                     </div>
                 </div>
             </div>
